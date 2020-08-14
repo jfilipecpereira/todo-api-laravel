@@ -29,7 +29,13 @@ class userController extends Controller
 
     public function store(Request $request)
     {
-        User::create($request->all());
+        //User::create($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->avatar = $request->avatar;
+        $user->save();
         return response()->json([
             "message" => "Utilizador criado com sucesso",
             "User" => $request->all()
