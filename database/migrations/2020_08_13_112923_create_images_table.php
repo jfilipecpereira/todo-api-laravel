@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->string('path');
             $table->timestamps();
 
-            $table->foreign('id_nota')->references('id')->on('notes');
+            $table->foreign('id_nota')->references('id')->on('notes')->onDelete('cascade');;
         });
     }
 
